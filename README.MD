@@ -16,7 +16,7 @@ Before using any helper script the necessary python requirements must be install
 
 ### Create or update stack
 
-[create_update_stack.py](/create_update_stack.py) creates or updates a stack.
+[create_update_stack.py](/src/create_update_stack.py) creates or updates a stack.
 
 Parameters:
 
@@ -32,7 +32,7 @@ python3 .\create_update_stack.py "stack_name" template parameter
 
 ### Delete stack
 
-[delete_stack.py](/delete_stack.py) deletes a stack.
+[delete_stack.py](/src/delete_stack.py) deletes a stack.
 
 Parameters:
 
