@@ -56,6 +56,8 @@ python3 .\delete_stack.py "stack_name"
 
 - `python3 .\create_update_stack.py "UdacityProject2" .\network.yml .\network-parameters.json`
 
+**Note:** Wait for the previous stack to be in a complete status before create the next stack
+
  3 - Run the servers template in order to create the necessary resources in AWS:
 
  - `python3 .\create_update_stack.py "servers" .\servers.yml .\servers-parameters.json`
