@@ -8,25 +8,27 @@ This repo mains to exercise the knowledge acquired in the course `Cloud DevOps E
 
 ![Diagram that represents the infrastructure develop in the CloudFormation script](/docs/images/project2.png)
 
-## Helpers scripts
+## Helper scripts
 
-Before using any helper script the necessary python requirements must be installed. The command below does it:
+Before using any helper script, the necessary python requirements must be installed. The command below does it:
 
 `pip3 install -r requirements.txt`
 
-### Create or update stack
+### Create or update stack script
 
 [create_update_stack.py](/src/create_update_stack.py) creates or updates a stack.
 
 Parameters:
 
 `stack_name`: name of the stack
+
 `template`: resources yml template
+
 `parameters`: json paramaters for the template
 
 #### How to run the script
 
-python3 .\create_update_stack.py "stack_name" template parameter
+python3 .\create_update_stack.py "stack_name" templateFile.yml parametersFile.json
 
 `python3 .\create_update_stack.py "UdacityProject2" .\network.yml .\network-parameters.json`
 
