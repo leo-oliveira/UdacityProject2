@@ -10,11 +10,11 @@ Parameters:
 
   AMIParameter:
     Description: AMI to be used for instances
-    Type: string
+    Type: String
 
   InstanceTypeParameter:
     Description: Instance Type
-    Type: string
+    Type: String
 
 Resources:
   UdacityS3ReadOnlyEC2:
@@ -46,7 +46,7 @@ Resources:
     Properties:
       GroupDescription: Allow http to load balancer
       VpcId:
-        !ImportValue:
+        Fn::ImportValue:
           !Sub "${EnvironmentName}-VPCID"
       SecurityGroupIngress:
       - IpProtocol: tcp
@@ -64,7 +64,7 @@ Resources:
     Properties:
       GroupDescription: Allow http to our hosts
       VpcId:
-        !ImportValue:
+        Fn::ImportValue:
           !Sub "${EnvironmentName}-VPCID"
       SecurityGroupIngress:
       - IpProtocol: tcp
@@ -81,7 +81,7 @@ Resources:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
       UserData:
-        !Base64: !Sub |
+        Fn::Base64: !Sub |
           #!/bin/bash
           apt-get update -y
           apt-get install unzip awscli -y
@@ -112,14 +112,14 @@ Resources:
       Protocol: HTTP
       UnhealthyThresholdCount: 10
       VpcId:
-        !ImportValue:
-          !Sub: "${EnvironmentName}-VPCID"
+        Fn::ImportValue:
+          Fn::Sub: "${EnvironmentName}-VPCID"
 
   UdagramGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
       VPCZoneIdentifier:
-      - !ImportValue:
+      - Fn::ImportValue:
           !Sub "${EnvironmentName}-PRIV-NETS"
       LaunchConfigurationName:
         Ref: UdagramLaunchConfig
@@ -132,8 +132,8 @@ Resources:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
       Subnets:
-      - !ImportValue: !Sub "${EnvironmentName}-PUB1-SN"
-      - !ImportValue: !Sub "${EnvironmentName}-PUB2-SN"
+      - Fn::ImportValue: !Sub "${EnvironmentName}-PUB1-SN"
+      - Fn::ImportValue: !Sub "${EnvironmentName}-PUB2-SN"
       SecurityGroups:
       - Ref: LBSecGroup
 
